@@ -1,2 +1,20 @@
 terraform/variables.tf
 terraform.tfvars
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform cache and provider binaries
+.terraform/
+
+# Terraform variable files (sensitive)
+*.tfvars
+*.tfvars.json
+
+# Terraform CLI configuration
+.terraformrc
+terraform.rc
+
+# Local backend configuration (if applicable)
+backend.tf
