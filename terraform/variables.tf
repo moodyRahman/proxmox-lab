@@ -1,7 +1,11 @@
 variable "proxmox-username" {
-  type        = string
+  type = string
 }
 
 variable "proxmox-password" {
-  type        = string
+  type = string
+}
+
+variable "node-name" {
+  type = string
 }
