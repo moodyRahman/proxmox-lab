@@ -6,6 +6,7 @@ resource "proxmox_virtual_environment_vm" "base_template" {
   
   lifecycle {
     ignore_changes  = all
+    prevent_destroy = true
   }
 }
 
@@ -18,7 +19,6 @@ terraform {
   required_providers {
     proxmox = {
       source  = "bpg/proxmox"
-      version = "0.86.0" # x-release-please-version
     }
   }
 }
