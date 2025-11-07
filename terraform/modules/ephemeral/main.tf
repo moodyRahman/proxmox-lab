@@ -1,36 +1,28 @@
 
+variable "vms" {
+  default = [
+    { name = "jumpbox", vm_id = 201 },
+    { name = "server", vm_id = 202 },
+    { name = "node-0",  vm_id = 203 },
+    { name = "node-1",  vm_id = 204 },
+  ]
+}
+
+
 resource "proxmox_virtual_environment_vm" "jumpbox" {
-  name      = "jumpbox"
+  for_each = {for inst in var.vms : inst.name => inst}
+
+  name      = each.key
   node_name = var.node-name
-  vm_id = 200
+  vm_id = each.value.vm_id
 
-  clone {
-    vm_id = var.base_vm_id
+  cpu {
+    cores = 3
   }
-
-  agent {
-    enabled = true
+  
+  memory {
+    dedicated = 2048
   }
-}
-
-resource "proxmox_virtual_environment_vm" "worker-1" {
-  name      = "worker-1"
-  node_name = var.node-name
-  vm_id = 201
-
-  clone {
-    vm_id = var.base_vm_id
-  }
-
-  agent {
-    enabled = true
-  }
-}
-
-resource "proxmox_virtual_environment_vm" "worker-2" {
-  name      = "worker-2"
-  node_name = var.node-name
-  vm_id = 202
 
   clone {
     vm_id = var.base_vm_id
