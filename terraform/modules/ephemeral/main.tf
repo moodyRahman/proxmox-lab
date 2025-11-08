@@ -16,6 +16,14 @@ resource "proxmox_virtual_environment_vm" "jumpbox" {
   node_name = var.node-name
   vm_id = each.value.vm_id
 
+  disk {
+    datastore_id = "local-lvm"
+    interface    = "scsi0"
+    discard      = "on"
+    size         = 20
+  }
+
+
   cpu {
     cores = 3
   }
