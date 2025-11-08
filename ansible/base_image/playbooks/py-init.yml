@@ -1,0 +1,8 @@
+- name: Run commands on system without Python
+  hosts: all
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: Install Python via raw shell
+      raw: |
+        apt-get update -y && apt-get install -y python3
