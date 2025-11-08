@@ -1,0 +1,128 @@
+ls
+su - 
+sudo apt install -y curl wget git vim htop unzip gnupg lsb-release ca-certificates software-properties-common net-tools iproute2
+sudo apt install -y curl wget git vim htop unzip gnupg lsb-release ca-certificates net-tools iproute2 
+ls
+sudo apt install -y sysstat iotop iftop nload traceroute lsof tcpdump duf btop
+sudo apt install -y dnsutils netcat-openbsd nmap socat iperf3
+sudo apt install -y git make gcc g++ python3 python3-pip golang nodejs npm
+sudo apt install zsh 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+su 
+su 
+dhclient
+
+
+: 1761965543:0;git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+: 1761965554:0;vim .zshrc 
+: 1761965622:0;clear
+: 1761965622:0;ls
+: 1761965651:0;sudo apt install htop 
+: 1761965725:0;clear 
+: 1761965725:0;ls
+: 1761965742:0;df -h
+: 1761965921:0;cat /etc/ssh/sshd_config 
+: 1761965928:0;sudo vim /etc/ssh/sshd_config
+: 1762084380:0;ls
+: 1762084385:0;python3 
+: 1762210855:0;apt install cloud-init
+: 1762210860:0;sudo apt install cloud-init
+: 1762214921:0;ssh-keygen
+: 1762214932:0;cat .ssh/id_ed25519.pub 
+: 1762215015:0;ssh git@github.com
+: 1762215388:0;curl -fsSL https://tailscale.com/install.sh | sh && sudo tailscale up --auth-key=tskey-auth-kJx78um9fR11CNTRL-ZC2iPpB9XwfDjtfj1FQwwfGxwbmP8CXh
+: 1762215457:0;sudo tailscale up 
+: 1762216381:0;curl google.com
+: 1762216414:0;sudo apt remove tailscale 
+: 1762216454:0;sudo apt install dhclient
+: 1762216477:0;sudo apt install isc-dhcp-client
+: 1762216489:0;_dhclient 
+: 1762216526:0;bas 
+: 1762216528:0;bash
+: 1762216542:0;sudo dhclient -v ens18
+: 1762220453:0;sudo tailscale status 
+: 1762220461:0;sudo tailscale down 
+: 1762220476:0;sudo tailscale status 
+: 1762220612:0;tailscale status
+: 1762220616:0;sudo tailscale status 
+: 1762220649:0;vim ts-init.sh 
+: 1762220660:0;chmod +x ts-init.sh
+: 1762221138:0;sudo tailscale status 
+: 1762221190:0;sudo vim /etc/init/ttyS0.conf
+: 1762221247:0;sudo mkdir /etc/init
+: 1762221248:0;sudo vim /etc/init/ttyS0.conf
+: 1762221368:0;sudo start ttyS0
+: 1762221396:0;sudo systemctl start ttyS0
+: 1762221411:0;sudo vim /etc/init/ttyS0.conf
+: 1762221429:0;ls /dev/ttyS0 
+: 1762221452:0;sudo systemctl enable serial-getty@ttyS0.service
+: 1762221456:0;sudo systemctl start serial-getty@ttyS0.service
+: 1762221460:0;sudo systemctl status serial-getty@ttyS0.service
+: 1762221465:0;screen /dev/ttyS0 115200
+: 1762221469:0;apt install screen 
+: 1762221472:0;sudo apt install screen 
+: 1762221482:0;screen /dev/ttyS0 115200
+: 1762221544:0;sudo rm /var/lib/tailscale/tailscaled.state
+: 1762222098:0;sudo apt remove tailscale
+: 1762222115:0;sudo rm -rf /var/lib/tailscale
+: 1762222127:0;ls /var/lib
+: 1762222132:0;tailscale
+: 1762222174:0;vim ts-init.sh
+: 1762223422:0;tailscale
+: 1762223427:0;vim ts-init.sh
+: 1762223610:0;cat /etc/rc.local
+: 1762223671:0;cd .config
+: 1762223717:0;mkdir -p .config/systemd/user
+: 1762223722:0;cd .config/systemd/user
+: 1762223722:0;ls
+: 1762223724:0;pwd
+: 1762223733:0;ts-init.service 
+: 1762223737:0;touch ts-init.service 
+: 1762223748:0;vim ts-init.service
+: 1762223769:0;vim .config/systemd/user/ts-init.service
+: 1762223799:0;realpath ~/ts-init.sh
+: 1762223804:0;vim .config/systemd/user/ts-init.service
+: 1762223809:0;vim ts-init.service
+: 1762223828:0;moody
+: 1762223833:0;vim .config/systemd/user/ts-init.service
+: 1762223917:0;realpath ~/ts-init.sh
+: 1762223962:0;cat ts-init.service
+: 1762223968:0;sudo
+: 1762223985:0;sudo systemctl daemon-reload
+: 1762224005:0;cat ts-init.service
+: 1762224053:0;sudo systemctl --user daemon-reload 
+: 1762224080:0;sudo cp ts-init.service /etc/systemd/system/
+: 1762224087:0;sudo systemctl daemon-reload
+: 1762224093:0;sudo systemctl enable ts-init.service
+: 1762224107:0;sudo rm /etc/systemd/system/ts-init.service
+: 1762224188:0;sudo ln -s ~/.config/systemd/user/ts-init.service /etc/systemd/system/ts-init.service 
+: 1762224201:0;ls /etc/systemd/system/ts-init.service
+: 1762224214:0;cat /etc/systemd/system/ts-init.service
+: 1762224233:0;sudo systemctl daemon-reload
+: 1762224236:0;sudo systemctl enable ts-init.service
+: 1762224244:0;vim ts-init.service
+: 1762224313:0;cat /etc/systemd/system/ts-init.service 
+: 1762224317:0;sudo systemctl daemon-reload
+: 1762224320:0;sudo systemctl enable ts-init.service
+: 1762224327:0;sudo systemctl start ts-init.service
+: 1762224336:0;sudo systemctl status ts-init.service
+: 1762224345:0;vim ts-init.service
+: 1762224362:0;vim ~/ts-init.sh
+: 1762224377:0;sudo systemctl start ts-init.service
+: 1762224379:0;sudo systemctl status ts-init.service
+: 1762224438:0;journalctl
+: 1762224488:0;sudo apt remove tailscale
+: 1762224498:0;sudo rm -rf /var/lib/tailscale
+: 1762224794:0;sudo rm /etc/systemd/system/ts-init.service
+: 1762224803:0;sudo systemctl daemon-reload
+: 1762224809:0;sudo systemctl status ts-init.service
+: 1762224817:0;tailscale
+: 1762224830:0;sudo rm /etc/systemd/system/ts-init.service
+: 1762224834:0;sudo rm -rf /var/lib/tailscale
+: 1762224897:0;tailscale
+: 1762563637:0;dmseg
+: 1762563644:0;sudo dmseg
+: 1762563652:0;ls
+: 1762563660:0;./ts-init.sh
+: 1762563671:0;sudo ./ts-init.sh
+: 1762563748:0;cat .zsh_history
