@@ -2,7 +2,27 @@
   hosts: all
   gather_facts: no
   become: yes
+  vars:
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
   tasks:
     - name: Install Python via raw shell
       raw: |
-        apt-get update -y && apt-get install -y python3
+        apt-get update -y && apt-get install -y python3 sudo cloud-init
+
+    - name: Copy tailscale init script
+      ansible.builtin.copy:
+        src: ../../host_scripts/ts-init.sh
+        dest: /home/moody/ts-init.sh
+        mode: '0755'
+
+    - name: Copy LVM resize script
+      ansible.builtin.copy:
+        src: ../../host_scripts/resize.sh
+        dest: /home/moody/resize.sh
+        mode: '0755'
+  
+    - name: Copy raw_init script (redundant)
+      ansible.builtin.copy:
+        src: ../../host_scripts/raw_init.sh
+        dest: /home/moody/raw_init.sh
+        mode: '0755'

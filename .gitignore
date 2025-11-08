@@ -21,3 +21,4 @@ backend.tf
 terraform/plan.json
 .gitignore
 terraform/plan.tfplan
+ansible/base_image/.env
