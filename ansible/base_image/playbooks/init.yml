@@ -5,7 +5,7 @@
   vars:
     ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
   tasks:
-    - name: Install Python via raw shell
+    - name: Install initial packages via raw shell
       raw: |
         apt-get update -y && apt-get install -y python3 sudo cloud-init
 
@@ -20,9 +20,8 @@
         src: ../../host_scripts/resize.sh
         dest: /home/moody/resize.sh
         mode: '0755'
-  
-    - name: Copy raw_init script (redundant)
-      ansible.builtin.copy:
-        src: ../../host_scripts/raw_init.sh
-        dest: /home/moody/raw_init.sh
-        mode: '0755'
+
+    - name: run raw init script
+      raw: |
+        usermod -aG sudo moody
+        echo "moody ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers >/dev/null && sudo visudo -cf /etc/sudoers
