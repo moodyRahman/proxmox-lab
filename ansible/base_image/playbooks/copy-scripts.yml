@@ -1,0 +1,25 @@
+---
+- name: Copy files to remote servers
+  hosts: all
+  become: yes
+  gather_facts: no
+
+  tasks:
+    - name: Copy tailscale init script
+      ansible.builtin.copy:
+        src: ../../host_scripts/ts-init.sh
+        dest: /home/moody/ts-init.sh
+        mode: '0755'
+
+    - name: Copy LVM resize script
+      ansible.builtin.copy:
+        src: ../../host_scripts/resize.sh
+        dest: /home/moody/resize.sh
+        mode: '0755'
+  
+
+    - name: Copy raw_init script (redundant)
+      ansible.builtin.copy:
+        src: ../../host_scripts/raw_init.sh
+        dest: /home/moody/raw_init.sh
+        mode: '0755'
