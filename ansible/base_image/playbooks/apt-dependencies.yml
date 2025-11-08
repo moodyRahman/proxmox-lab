@@ -22,7 +22,6 @@
           - gnupg
           - lsb-release
           - ca-certificates
-          - software-properties-common
           - net-tools
           - iproute2
         state: present
