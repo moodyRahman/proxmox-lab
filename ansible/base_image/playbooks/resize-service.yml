@@ -17,8 +17,14 @@
         mode: '0755'
         content: |
           #!/bin/bash
-          set -euo pipefail
+          set -uo pipefail
           growpart /dev/sda 1
+          EXIT_CODE=$?
+          if [ "$EXIT_CODE" -eq 1 ]; then
+              exit 0
+          elif [ "$EXIT_CODE" -ne 0 ]; then
+              exit "$EXIT_CODE"
+          fi
           pvresize /dev/sda1
           lvextend -r -l +100%FREE /dev/base/root
 
