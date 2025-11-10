@@ -9,19 +9,13 @@
       raw: |
         apt-get update -y && apt-get install -y python3 sudo cloud-init
 
-    - name: Copy tailscale init script
-      ansible.builtin.copy:
-        src: ../../host_scripts/ts-init.sh
-        dest: /home/moody/ts-init.sh
-        mode: '0755'
-
     - name: Copy LVM resize script
       ansible.builtin.copy:
         src: ../../host_scripts/resize.sh
         dest: /home/moody/resize.sh
         mode: '0755'
 
-    - name: run raw init script
+    - name: Enable passwordless sudo
       raw: |
         usermod -aG sudo moody
         echo "moody ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers >/dev/null && sudo visudo -cf /etc/sudoers
