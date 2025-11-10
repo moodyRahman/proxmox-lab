@@ -24,6 +24,7 @@
           - ca-certificates
           - net-tools
           - iproute2
+          - jq
         state: present
 
     - name: Install monitoring and diagnostic tools
