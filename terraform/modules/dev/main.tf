@@ -13,6 +13,11 @@ resource "proxmox_virtual_environment_vm" "image-dev-box" {
   }
 }
 
+output "image-dev-box-ip" {
+  value = proxmox_virtual_environment_vm.image-dev-box.ipv4_addresses
+}
+
+
 terraform {
   required_providers {
     proxmox = {

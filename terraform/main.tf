@@ -18,3 +18,6 @@ module "persistent" {
   node-name = var.node-name
 }
 
+output "image-dev-box-ip" {
+  value = module.dev.image-dev-box-ip
+}
