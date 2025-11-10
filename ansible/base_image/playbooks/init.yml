@@ -9,12 +9,6 @@
       raw: |
         apt-get update -y && apt-get install -y python3 sudo cloud-init
 
-    - name: Copy LVM resize script
-      ansible.builtin.copy:
-        src: ../../host_scripts/resize.sh
-        dest: /home/moody/resize.sh
-        mode: '0755'
-
     - name: Enable passwordless sudo
       raw: |
         usermod -aG sudo moody
