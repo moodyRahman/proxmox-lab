@@ -50,9 +50,8 @@
           - iperf3
         state: present
 
-    - name: Install developer toolchain
+    - name: Install dynamic resizing script dependency
       apt:
         name:
-          - git
-          - make
+          - cloud-guest-utils
         state: present
