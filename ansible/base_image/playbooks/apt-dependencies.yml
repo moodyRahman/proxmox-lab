@@ -10,48 +10,50 @@
         update_cache: yes
         cache_valid_time: 3600
 
-    - name: Install essential utilities
+    - name: Install system essentials
       apt:
         name:
           - curl
           - wget
           - git
           - vim
-          - htop
           - unzip
           - gnupg
           - lsb-release
           - ca-certificates
+          - jq
           - net-tools
           - iproute2
-          - jq
         state: present
 
-    - name: Install monitoring and diagnostic tools
+    - name: Install monitoring and performance tools
       apt:
         name:
+          - htop
+          - btop
           - sysstat
           - iotop
           - iftop
           - nload
-          - traceroute
-          - lsof
-          - tcpdump
           - duf
-          - btop
         state: present
 
     - name: Install networking and debugging tools
       apt:
         name:
           - dnsutils
+          - traceroute
           - nmap
           - socat
           - iperf3
+          - lsof
+          - tcpdump
         state: present
 
-    - name: Install dynamic resizing script dependency
+    - name: Install disk and cloud utilities
       apt:
         name:
           - cloud-guest-utils
+          - util-linux
+          - gdisk
         state: present
