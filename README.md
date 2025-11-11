@@ -120,4 +120,38 @@ mark the base template as something to never be deleted. I also have several bac
 the templates .qcow2 file and plans to create an Ansible script to reproduce the base 
 template. 
 
+The next issue hit when I realized that resizing the virtual drive in Proxmox does not 
+actually expand the partitions inside the VM to use up the unallocated space. This was 
+a problem because I wanted my base image to be as minimally configurable as possible, 
+ie expanding the virtual disk should be immediately reflected in the operating system. 
+
+This had turned out to be a structural issue with the way I had gone through the Debian 
+installer ISO, and the default ordering of partititions made it difficult to write a 
+failproof partition resize script. This was the point I had gotten sick of manually working 
+on the base template and moved to automating that too. 
+
+I did some reading on Debian preseed scripts to automate the initial installation of Debian
+onto a blank serber and played around, but I re-prioritized it as a feature to pursue 
+at a later time. I created the "base-image-raw" template, which has absolutely nothing 
+on it and is the freshest possible Debian server after configuring LVM in the installer. 
+
+Next, I wrote ansible playbooks that would perform the initial configuring of the machine for 
+future ansible playbooks, enable passwordless root, install dependencies, and copy keys. 
+Further research would reveal that most cloud images don't even bother with partitions, 
+they have a single partition with a filesystem that's mounted on root, regarding whether 
+the LVM configurations are useful as an ongoing conversation with myself. The wonderful 
+part is that I can easily make that decision and try things out, as all of the configuration 
+has been refactored into my playbooks. I decided to forgo the layer of LVM and opted back into
+a single partition with a swapfile. I also experimented with using UEFI for the base template 
+rather than MBR to simplify the process of expanding the disk into unallocated space to some 
+unsuccess, but it also further proved the value of having all my IaC. 
+
+I had also included the process of provisioning vm's to test out the base image configuration 
+into terraform, and wrote an ansible inventory Python script that queries "terraform output" for the 
+IP of the fresh machine to test the base iamge playbooks on. Which makes for a wonderful flow 
+of tapping away at my ansible playbook, trying things out until something breaks, and being able 
+to quickly delete and reprovision that VM, and immediately run a script to get me back to where
+I was before I broke the VM. 
+
+
 To be continued...
