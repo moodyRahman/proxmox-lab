@@ -13,6 +13,26 @@ resource "proxmox_virtual_environment_vm" "image-dev-box" {
   }
 }
 
+
+resource "proxmox_virtual_environment_vm" "base_image" {
+
+  name      = "base-image"
+  node_name = var.node-name
+  vm_id = 302
+
+  template = true
+
+  clone {
+    vm_id = proxmox_virtual_environment_vm.image-dev-box.vm_id
+  }
+
+  agent {
+    enabled = true
+  }
+}
+
+
+
 output "image-dev-box-ip" {
   value = proxmox_virtual_environment_vm.image-dev-box.ipv4_addresses
 }

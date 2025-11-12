@@ -148,7 +148,7 @@ unsuccess, but it also further proved the value of having all my IaC.
 
 I had also included the process of provisioning vm's to test out the base image configuration 
 into terraform, and wrote an ansible inventory Python script that queries "terraform output" for the 
-IP of the fresh machine to test the base iamge playbooks on. Which makes for a wonderful flow 
+IP of the fresh machine to test the base image playbooks on. Which makes for a wonderful flow 
 of tapping away at my ansible playbook, trying things out until something breaks, and being able 
 to quickly delete and reprovision that VM, and immediately run a script to get me back to where
 I was before I broke the VM. 
