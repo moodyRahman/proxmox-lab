@@ -41,6 +41,10 @@ resource "proxmox_virtual_environment_vm" "jumpbox" {
   }
 }
 
+output "k8-ips" {
+  value = [for inst in proxmox_virtual_environment_vm.jumpbox: inst.ipv4_addresses]
+}
+
 terraform {
   required_providers {
     proxmox = {
