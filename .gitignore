@@ -22,4 +22,4 @@ terraform/plan.json
 .gitignore
 terraform/plan.tfplan
 ansible/base_image/.env
-ansible/base_image/.env.yml
+.env.yml
