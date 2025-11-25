@@ -60,6 +60,22 @@
         enabled: yes
         state: started
 
+    - name: Ensure br_netfilter module is loaded
+      ansible.builtin.modprobe:
+        name: br_netfilter
+        state: present
+
+    - name: Ensure sysctl settings for Kubernetes
+      ansible.posix.sysctl:
+        name: "{{ item.key }}"
+        value: "{{ item.value }}"
+        state: present
+        reload: yes
+      loop:
+        - { key: "net.bridge.bridge-nf-call-iptables", value: 1 }
+        - { key: "net.bridge.bridge-nf-call-ip6tables", value: 1 }
+        - { key: "net.ipv4.ip_forward", value: 1 }
+
   handlers:
     - name: apt update
       apt:

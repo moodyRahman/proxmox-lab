@@ -1,0 +1,17 @@
+- name: Run Tailscale install with auth key
+  hosts: all
+  become: yes
+  gather_facts: no
+  vars_files:
+  - ../.env.yml
+
+
+  tasks:
+    - name: Run install script with injected env variable
+      ansible.builtin.shell: tailscale logout
+      register: result
+
+    - debug: msg="{{ result.stdout }}"
+
+    - name: Restart tailscale
+      ansible.builtin.shell: tailscale down
