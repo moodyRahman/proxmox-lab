@@ -1,14 +1,14 @@
-resource "proxmox_virtual_environment_vm" "base_template" {
-  name      = "base-image-old-part"
-  node_name = var.node-name
-  vm_id = 106
-  template = true
+# resource "proxmox_virtual_environment_vm" "base_template_old" {
+#   name      = "base-image-old-part"
+#   node_name = var.node-name
+#   vm_id = 106
+#   template = true
   
-  lifecycle {
-    ignore_changes  = all
-    prevent_destroy = true
-  }
-}
+#   lifecycle {
+#     ignore_changes  = all
+#     prevent_destroy = true
+#   }
+# }
 
 resource "proxmox_virtual_environment_vm" "base_template_raw" {
   name      = "base-image-raw"
@@ -23,9 +23,9 @@ resource "proxmox_virtual_environment_vm" "base_template_raw" {
 }
 
 
-output "base_template_vm_id" {
-  value = proxmox_virtual_environment_vm.base_template.vm_id
-}
+# output "base_template_vm_id" {
+#   value = proxmox_virtual_environment_vm.base_template.vm_id
+# }
 
 output "base_template_raw_vm_id" {
   value = proxmox_virtual_environment_vm.base_template_raw.vm_id
