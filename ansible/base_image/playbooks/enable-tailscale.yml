@@ -3,7 +3,7 @@
   become: yes
   gather_facts: no
   vars_files:
-  - ../.env.yml
+  - ../../.env.yml
 
 
   tasks:
