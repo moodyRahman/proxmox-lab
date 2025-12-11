@@ -45,6 +45,14 @@ output "k8-ips" {
   value = [for inst in proxmox_virtual_environment_vm.jumpbox: inst.ipv4_addresses]
 }
 
+output "k8-jumpbox" {
+  value = proxmox_virtual_environment_vm.jumpbox["jumpbox"].ipv4_addresses
+}
+
+output "k8-control" {
+  value = proxmox_virtual_environment_vm.jumpbox["server"].ipv4_addresses
+}
+
 terraform {
   required_providers {
     proxmox = {
