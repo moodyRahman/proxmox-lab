@@ -1,0 +1,4 @@
+[submodule "ansible"]
+	path = ansible
+	url = git@github.com:moodyRahman/ansible-scripts.git
+	branch = main
