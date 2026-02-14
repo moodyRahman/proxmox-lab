@@ -9,3 +9,7 @@ variable "proxmox-password" {
 variable "node-name" {
   type = string
 }
+
+variable "cluster-password" {
+  type = string
+}
