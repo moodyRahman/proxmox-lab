@@ -19,20 +19,65 @@
 #   }
 # }
 
+resource "proxmox_virtual_environment_vm" "control" {
+
+  name      = "control"
+  node_name = var.node-name
+  vm_id = 202
+
+  disk {
+    datastore_id = "media-zfs"
+    interface    = "scsi0"
+    discard      = "on"
+    size         = 11
+  }
+
+  disk {
+    datastore_id = "media-zfs"
+    interface    = "scsi1"
+    discard      = "on"
+    size         = 20
+  }
+
+
+  cpu {
+    cores = 3
+  }
+  
+  memory {
+    dedicated = 4096
+  }
+
+  clone {
+    vm_id = 140
+  }
+
+  agent {
+    enabled = true
+  }
+
+  initialization {
+    user_account {
+      username = "moody"
+      password = var.cluster-password
+      keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOVGZIgND5Ow9kLkXLFGBtNF8z8DodHWgi1Vytxad+dQ moody@base-image"]
+    }
+  }
+}
+
+
+
+
 
 
 variable "vms" {
   default = [
-    { name = "jumpbox", vm_id = 201 },
-    { name = "server", vm_id = 202 },
     { name = "node-0",  vm_id = 203 },
     { name = "node-1",  vm_id = 204 },
   ]
 }
 
-
-
-resource "proxmox_virtual_environment_vm" "cluster" {
+resource "proxmox_virtual_environment_vm" "workers" {
   for_each = {for inst in var.vms : inst.name => inst}
 
   name      = each.key
@@ -42,6 +87,13 @@ resource "proxmox_virtual_environment_vm" "cluster" {
   disk {
     datastore_id = "media-zfs"
     interface    = "scsi0"
+    discard      = "on"
+    size         = 11
+  }
+
+  disk {
+    datastore_id = "media-zfs"
+    interface    = "scsi1"
     discard      = "on"
     size         = 20
   }
