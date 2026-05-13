@@ -104,7 +104,7 @@ resource "proxmox_virtual_environment_vm" "workers" {
   }
   
   memory {
-    dedicated = 2048
+    dedicated = 3072
   }
 
   clone {
